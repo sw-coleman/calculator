@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.calculator{
+    height:580px;
+    width: 400px;
+    background-color: #292929;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    justify-content: center;
+    gap: 7px;
+}
+
+.display{
+    background-color: #817859;
+    height: 50px;
+    border: 5px #878878 solid;
+    margin: 5px;
+    width: 365px;
+    align-self: center;
+}
+
+.row{
+    background-color: #b8a888;
+    height: 80px;
+    margin-right: 15px;
+    margin-left: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+button{
+    height: 50px;
+    border: 5px solid rgb(39, 39, 39);
+    border-radius: 10px;
+    font-size: 26px;
+    font-weight: light;
+    color: white;
+}
+
+.button{
+    width: 80px;
+    background: linear-gradient(90deg, #616161, #222222);
+}
+
+.equals-button{
+    width: 180px;
+    background: linear-gradient(90deg, #686049, #4f4838);
+}
+
+.clear-button{
+    width: 80px;
+    background: linear-gradient(90deg, #f0894f, #e86c3c);
+}
+
+.calculator-header{
+    display: flex;
+    flex-direction: column;
+}
+
+.red-line{
+    background-color: #792830;
+    height: 3px;
+    width: 370px;
+    margin-left: 15px;
+}
+
+.header-txt{
+    display: flex;
+    margin-top: 10px;
+    margin-left: 15px;
+    color: white;
+    justify-content: flex-start;
+    font-size: 36px;
+    font-family: Silkscreen;
+    font-weight: bold;
+}
+
+.calculator-footer{
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+a:link{
+    color: white;
+}
+a:visited{
+    color: white;
+}
+a:hover{
+    color: white;
+    scale: 1.05;
+}
+a:active{
+    color: white;
+}
+
+/* Style reference: https://ih1.redbubble.net/image.13133431.3338/flat,750x1000,075,f.u4.jpg*/
