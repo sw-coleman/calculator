@@ -1,6 +1,6 @@
 //Global variables to assign buttons 
-const digitBtns = document.querySelectorAll("digit-button");
-const operatorBtns = document.querySelectorAll("operator-button");
+const digitBtns = document.querySelectorAll(".digit-button");
+const operatorBtns = document.querySelectorAll(".operator-button");
 const clearBtn = document.getElementById("clear");
 const posNegBtn = document.getElementById("pos-neg");
 const decimalBtn = document.getElementById("decimal");
@@ -9,15 +9,19 @@ const display = document.getElementById("display");
 
 let currentNum = 0;
 
-//Functions to update and clear display
-function updateDisplay(input) { 
-    display.textContent = input;
-    }
+//Function to clear display
 function clearDisplay() {
-    display.textContent = 0;
+    display.textContent = '';
 }
 
-//Adding function to button presses.
+//Add event listener to each digit button, and change display to show value of button
+digitBtns.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        const value = e.target.dataset.value;
+        display.textContent += value;
+    });
+});
+
 clearBtn.addEventListener("click", clearDisplay);
 
 //Arithmatic functions
@@ -34,7 +38,7 @@ function divide(x,y){
     if (y!=0){
         return x / y;
     } else {
-        updateDisplay('ERROR'); //Cannot divide a number by 0.
+        display.textContent = "ERROR"; //Cannot divide a number by 0.
     }
 }
 
