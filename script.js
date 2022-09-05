@@ -3,26 +3,52 @@ const digitBtns = document.querySelectorAll(".digit-button");
 const operatorBtns = document.querySelectorAll(".operator-button");
 const clearBtn = document.getElementById("clear");
 const posNegBtn = document.getElementById("pos-neg");
-const decimalBtn = document.getElementById("decimal");
 const equalsBtn = document.getElementById("equals");
-const display = document.getElementById("display");
+const displayMain = document.getElementById("display-main");
+const displaySec = document.getElementById("display-sec");
 
-let currentNum = 0;
-
-//Function to clear display
-function clearDisplay() {
-    display.textContent = '';
-}
+let currentNum = '';
+let previousNum = '';
+let result = null;
+let operation = '';
+let hasDecimal = false;
 
 //Add event listener to each digit button, and change display to show value of button
 digitBtns.forEach(btn => {
     btn.addEventListener("click", (e) => {
+        if(e.target.textContent === '.' && !hasDecimal){ //Only allow the user to add 1 decimal point to each number
+            hasDecimal = true;
+        } else if (e.target.textContent === '.' && hasDecimal){
+            return;
+        }
         const value = e.target.dataset.value;
-        display.textContent += value;
+        displayMain.textContent += value;
+        currentNum = displayMain.textContent;
+    });
+});
+//Add event listener to each operator button
+operatorBtns.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        if(!currentNum) result;
+        hasDecimal = false;
+        const operationName = e.target.textContent;
+        if(previousNum && currentNum && operation){
+            operate();
+        } else {
+            result = parseFloat(currentNum);
+        }
+        console.log(result);
+        clearNum(operationName);
     });
 });
 
-clearBtn.addEventListener("click", clearDisplay);
+//Function to clear current var and store in secondary var
+function clearNum(name = '') {
+    previousNum += currentNum + '' + name + ' ';
+    displaySec.textContent = previousNum;
+    hasDecimal = false;
+    displayMain.textContent = '';
+}
 
 //Arithmatic functions
 function add(x,y){
@@ -31,7 +57,7 @@ function add(x,y){
 function subtract(x,y){
     return x - y;
 }
-function multiply(x,y){
+function multiply(x,y){z
     return x * y;
 }
 function divide(x,y){
@@ -41,6 +67,19 @@ function divide(x,y){
         display.textContent = "ERROR"; //Cannot divide a number by 0.
     }
 }
+
+
+
+//Function to clear display 
+function clearDisplay() {
+    currentNum = '';
+    previousNum = '';
+    displayMain.textContent = '';
+    displaySec.textContent = '';
+    result = '';
+}
+
+clearBtn.addEventListener("click", clearDisplay);
 
 //Function to execute arithmatic operation
 function operate(operator,x,y){
@@ -59,4 +98,3 @@ function operate(operator,x,y){
             break;
     }
 }
-

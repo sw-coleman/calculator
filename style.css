@@ -6,7 +6,7 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: black;
+    background: radial-gradient(#b9b9b9, #616161);
 }
 
 .calculator{
@@ -32,8 +32,12 @@ body{
     align-self: center;
     font-family: Silkscreen;
     font-size: 52px;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
+}
+
+#display-sec{
+    color: rgba(53, 53, 53, 0.363);
 }
 
 .row{
@@ -53,6 +57,11 @@ button{
     font-size: 26px;
     color: white;
 }
+
+button:hover{
+    scale: 1.1;
+}
+
 
 .button{
     width: 80px;

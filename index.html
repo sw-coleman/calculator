@@ -13,7 +13,10 @@
             <div class="header-txt">Calculator</div>
             <div class="red-line"></div>
         </div>
-        <div class="display" id="display"></div>
+        <div class="display">
+            <div id="display-sec"></div>
+            <div id="display-main"></div>
+        </div>
         <div class="buttons">
             <div class="row" id="first">
                 <button class="clear-button" id = 'clear'>C</button>
@@ -41,7 +44,7 @@
             </div>
             <div class="row" id="fifth">
                 <button class="digit-button" id = 'zero' data-value="0">0</button>
-                <button class="decimal-button" id = 'decimal'>.</button>
+                <button class="digit-button" id = 'decimal' data-value=".">.</button>
                 <button class="equals-button" id = 'equals'>=</button>
             </div>
         </div>
