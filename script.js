@@ -33,13 +33,25 @@ operatorBtns.forEach(btn => {
         hasDecimal = false;
         const operationName = e.target.textContent;
         if(previousNum && currentNum && operation){
-            operate();
+            twoInputs = true;
         } else {
             result = parseFloat(currentNum);
         }
         console.log(result);
         clearNum(operationName);
+        operation = operationName;
     });
+});
+
+equalsBtn.addEventListener("click", (e)=> {
+    if(!currentNum || !previousNum) return;
+    hasDecimal = false;
+    operate();
+    clearNum();
+    displayMain.textContent = result;
+    displaySec.textContent = '';
+    currentNum = result;
+    previousNum = '';
 });
 
 //Function to clear current var and store in secondary var
@@ -57,7 +69,7 @@ function add(x,y){
 function subtract(x,y){
     return x - y;
 }
-function multiply(x,y){z
+function multiply(x,y){
     return x * y;
 }
 function divide(x,y){
@@ -67,8 +79,6 @@ function divide(x,y){
         display.textContent = "ERROR"; //Cannot divide a number by 0.
     }
 }
-
-
 
 //Function to clear display 
 function clearDisplay() {
@@ -82,19 +92,14 @@ function clearDisplay() {
 clearBtn.addEventListener("click", clearDisplay);
 
 //Function to execute arithmatic operation
-function operate(operator,x,y){
-    switch(operator){
-        case '+':
-            return add(x,y);
-            break;
-        case '-':
-            return subtract(x,y);
-            break;
-        case '*':
-            return multiply(x,y);
-            break;
-        case '/':
-            return divide(x,y);
-            break;
+function operate(){
+    if (operation === 'x'){
+        result = multiply(parseFloat(result), parseFloat(currentNum));
+    } else if (operation === '+'){
+        result = add(parseFloat(result), parseFloat(currentNum));
+    } else if (operation === '-'){
+        result = subtract(parseFloat(result), parseFloat(currentNum));
+    } else if (operation === '÷'){
+        result = divide(parseFloat(result), parseFloat(currentNum));
     }
 }
