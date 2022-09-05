@@ -23,21 +23,23 @@ body{
 }
 
 .display{
-    display: flex;
     background-color: #817859;
-    height: 50px;
+    height: 80px;
     border: 5px #878878 solid;
     margin: 5px;
     width: 365px;
     align-self: center;
     font-family: Silkscreen;
-    font-size: 52px;
+    font-size: 42px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     justify-content: space-between;
-    align-items: center;
 }
 
 #display-sec{
     color: rgba(53, 53, 53, 0.363);
+    font-size: 24px;
 }
 
 .row{
