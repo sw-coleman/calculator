@@ -2,7 +2,6 @@
 const digitBtns = document.querySelectorAll(".digit-button");
 const operatorBtns = document.querySelectorAll(".operator-button");
 const clearBtn = document.getElementById("clear");
-const posNegBtn = document.getElementById("pos-neg");
 const equalsBtn = document.getElementById("equals");
 const displayMain = document.getElementById("display-main");
 const displaySec = document.getElementById("display-sec");
@@ -14,7 +13,6 @@ let operation = '';
 let inverseNumber = '';
 let hasDecimal = false;
 let alreadyCalc = false;
-
 //Add event listener to each digit button, and change display to show value of button
 digitBtns.forEach(btn => {
     btn.addEventListener("click", (e) => {
@@ -51,7 +49,6 @@ operatorBtns.forEach(btn => {
         alreadyCalc = false;
     });
 });
-
 //Functionality for equals button.
 equalsBtn.addEventListener("click", (e)=> {
     if(!currentNum || !result) return;
@@ -69,7 +66,6 @@ equalsBtn.addEventListener("click", (e)=> {
     previousNum = '';
     alreadyCalc = true;
 });
-
 //Function to clear current var and store in secondary var
 function clearNum(name = '') {
     displaySec.textContent = currentNum + '' + name + ' ';
@@ -78,7 +74,6 @@ function clearNum(name = '') {
     displayMain.textContent = ''
     currentNum = '';
 }
-
 //Arithmatic functions
 function add(x,y){
     return x + y;
@@ -99,12 +94,9 @@ function divide(x,y){
 function modulus(x,y){
     return x % y;
 }
-
-//Function to add negative/positive button
-posNegBtn.addEventListener("click", (e)=> {
-
-});
-
+function power(x,y){
+    return x ** y;
+}
 //Function to clear display 
 function clearDisplay() {
     currentNum = '';
@@ -115,7 +107,6 @@ function clearDisplay() {
     alreadyCalc = false;
 }
 clearBtn.addEventListener("click", clearDisplay);
-
 //Function to execute arithmatic operation
 function operate(){
     if (operation === 'x'){
@@ -128,10 +119,11 @@ function operate(){
         result = divide(parseFloat(result), parseFloat(currentNum));
     } else if (operation === '%'){
         result = modulus(parseFloat(result), parseFloat(currentNum));
+    } else if (operation === '^'){
+        result = power(parseFloat(result), parseFloat(currentNum));
     }
 }
-
-//Function to limit user input to 6 digits
+//Function to limit user input to 10 digits.
 function limitUserInput(){
         if (currentNum.toString().length > 10){
             return true;
@@ -139,4 +131,3 @@ function limitUserInput(){
             return false;
         }
 };
-
